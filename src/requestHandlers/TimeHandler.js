@@ -8,12 +8,11 @@ const responses = [
 ]
 
 module.exports = {
-  canHandle(handlerInput) {
-      const request = handlerInput.requestEnvelope.request;
+  canHandle({ requestEnvelope }) {
+      const request = requestEnvelope.request;
       return request.type === 'IntentRequest' && request.intent.name === 'TimeIntent' ;
   },
-  handle(handlerInput) {
-      const responseBuilder = handlerInput.responseBuilder;
+  handle({ responseBuilder }) {
       const time = moment().format('h:mm A');
       const prefix = responses[Math.floor(Math.random()*responses.length)];
 

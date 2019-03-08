@@ -5,7 +5,7 @@ module.exports = {
       console.log('Launch Handler canHandle');
       return request.type === 'LaunchRequest';
   },
-  handle({ responseBuilder, requestEnvelope }) {
+  handle({ responseBuilder }) {
       const outputSpeech = 'Hello and welcome to Tram Finder';
       return responseBuilder
           .speak(outputSpeech)
