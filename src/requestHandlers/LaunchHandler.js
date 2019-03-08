@@ -2,7 +2,6 @@
 module.exports = {
   canHandle({ requestEnvelope }) {
       const request = requestEnvelope.request;
-      console.log('Launch Handler canHandle');
       return request.type === 'LaunchRequest';
   },
   handle({ responseBuilder }) {
