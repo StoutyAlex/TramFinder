@@ -31,4 +31,30 @@ describe('StationParser', () => {
       expect(station.getName()).toEqual('cornbrook');
     });
   });
+  describe('MultipleDestinations', () => {
+    describe('getWaitTimes', () => {
+      test('should return all destination - incoming', () => {
+        const station = new Station(mockData.multipleDestinations, 'cornbrook');
+        const waitTimes = station.getWaitTimes(station.getIncoming());
+        expect(waitTimes).toHaveLength(3);
+      });
+      test('should return all destinations - outgoing', () => {
+        const station = new Station(mockData.multipleDestinations, 'cornbrook');
+        const waitTimes = station.getWaitTimes(station.getOutgoing());
+        expect(waitTimes).toHaveLength(3);
+      });
+      test('should return all destinations - outgoing', () => {
+        const station = new Station(mockData.stPetersSquare, 'St peters square');
+        const waitTimes = station.getWaitTimesUnique(station.getIncoming());
+        expect(waitTimes).toHaveLength(6)
+      });
+    });
+    describe('getWaitTimesUnique', () => {
+      test('should return only one destination with the lowest time to incoming', () => {
+        const station = new Station(mockData.multipleDestinations, 'cornbrook');
+        const waitTimes = station.getWaitTimesUnique(station.getIncoming());
+        expect(waitTimes).toHaveLength(3);
+      });
+    });
+  });
 });
