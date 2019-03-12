@@ -13,7 +13,6 @@ module.exports = {
     try {
         const rawData = await metrolink.getData();
         const station = new Station(rawData.data.value, stationName);
-        
         console.log(station.getWaitTimesUnique(station.getOutgoing()));
         console.log(station.getWaitTimesUnique(station.getIncoming()));
         return responseBuilder
