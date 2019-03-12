@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "build": "./build.sh",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest *.spec.js",
     "bst": "bst proxy lambda index.js"
   },
   "author": "",
