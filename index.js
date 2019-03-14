@@ -1,3 +1,4 @@
+require('dotenv').config()
 const Alexa = require('ask-sdk');
 
 const TimeHandler = require('./src/requestHandlers/TimeHandler');
