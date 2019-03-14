@@ -5,7 +5,7 @@ module.exports = {
       return request.type === 'LaunchRequest';
   },
   handle({ responseBuilder }) {
-      const { environment } = process.env;
+      let { environment } = process.env;
       if (environment === undefined) environment = '';
       const outputSpeech = `Hello and welcome to ${environment} Tram Finder`;
       return responseBuilder
