@@ -5,7 +5,8 @@ module.exports = {
       return request.type === 'LaunchRequest';
   },
   handle({ responseBuilder }) {
-      const outputSpeech = 'Hello and welcome to int Tram Finder';
+      const { environment } = process.env;
+      const outputSpeech = `Hello and welcome to ${environment} Tram Finder`;
       return responseBuilder
           .speak(outputSpeech)
           .reprompt('try again, ' + outputSpeech)
