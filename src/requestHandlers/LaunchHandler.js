@@ -6,6 +6,7 @@ module.exports = {
   },
   handle({ responseBuilder }) {
       const { environment } = process.env;
+      if (environment === undefined) environment = '';
       const outputSpeech = `Hello and welcome to ${environment} Tram Finder`;
       return responseBuilder
           .speak(outputSpeech)
