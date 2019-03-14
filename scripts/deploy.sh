@@ -1,3 +1,5 @@
+#!/bin/sh
+
 set -e
 
 ENVIRONMENT=""
@@ -16,7 +18,7 @@ done
 
 deploy() {
   echo "Creating deployment for ${ENVIRONMENT} to ${FUNCTION_NAME} lambda..."
-  AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://function.zip --region eu-west-1
+  aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://function.zip --region eu-west-1
 }
 
 case "${ENVIRONMENT}" in
