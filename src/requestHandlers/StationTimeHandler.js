@@ -1,6 +1,4 @@
-const moment = require('moment');
-const metrolink = require('../metrolink');
-const Station = require('../metrolink/Station');
+const station = require('../station');
 
 module.exports = {
   canHandle({ requestEnvelope }) {
@@ -11,13 +9,12 @@ module.exports = {
   handle: async ({ responseBuilder, requestEnvelope }) => {
     const stationName = requestEnvelope.request.intent.slots.station.value;
     try {
-        const rawData = await metrolink.getData();
-        const station = new Station(rawData.data.value, stationName);
-        console.log(station.getWaitTimesUnique(station.getOutgoing()));
-        console.log(station.getWaitTimesUnique(station.getIncoming()));
+        const requestedStation = await station(stationName);
+        console.log(requestedStation); 
+
         return responseBuilder
-          .speak(station.getName())
-          .reprompt('try again, ' + station.getName())
+          .speak(requestedStation.stationName)
+          .reprompt('try again, ' + station.stationName)
           .getResponse();
       } catch (error) {
         console.log(error);
@@ -26,21 +23,5 @@ module.exports = {
           .reprompt('try again, ' + 'outputSpeech')
           .getResponse();
       }
-      // return metrolink.getData(stationSlot)
-      //   .then(station => {
-      //     console.log(station);
-      //     let outputSpeech = '';
-
-
-      //     outputSpeech = `${incomingText} ${outgoingText}`;
-
-
-      //   })
-      //   .catch(error => {
-      //     return responseBuilder
-      //       .speak('Sorry did not work')
-      //       .reprompt('try again, ' + outputSpeech)
-      //       .getResponse();
-      //   });
   },
 };
