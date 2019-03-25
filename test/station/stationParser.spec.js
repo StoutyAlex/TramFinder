@@ -40,7 +40,7 @@ describe('StationParser', () => {
           destination: 'Manchester Airport', wait: [ '6' ]
         },
         {
-          destination: 'East Didsbury', wait: [ '0', '3', '14']
+          destination: 'East Didsbury', wait: [ '3', '14']
         },
       ])
     });

@@ -49,6 +49,7 @@ const getOutgoing = (station) => {
 const getGrouped = (times) => {
   let groupedItems = [];
   times.forEach((tram) => {
+    if(tram.wait == 0) return;
     if ( _.find(times, { destination: tram.destination })) {
       if(!_.find(groupedItems, { destination: tram.destination })) {
         groupedItems.push({

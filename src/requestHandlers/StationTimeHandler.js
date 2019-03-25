@@ -1,4 +1,5 @@
 const station = require('../station');
+const translator = require('../station/translator');
 
 module.exports = {
   canHandle({ requestEnvelope }) {
@@ -8,20 +9,22 @@ module.exports = {
   },
   handle: async ({ responseBuilder, requestEnvelope }) => {
     const stationName = requestEnvelope.request.intent.slots.station.value;
+    let requestedStation;
     try {
-        const requestedStation = await station(stationName);
-        console.log(requestedStation); 
-
-        return responseBuilder
-          .speak(requestedStation.stationName)
-          .reprompt('try again, ' + station.stationName)
-          .getResponse();
+        requestedStation = await station(stationName);
       } catch (error) {
-        console.log(error);
         return responseBuilder
           .speak('There was an error getting the data for ' + stationName)
           .reprompt('try again, ' + 'outputSpeech')
           .getResponse();
       }
+
+      const outputSpeech = translator(requestedStation);
+      console.log(requestedStation);
+
+      return responseBuilder
+        .speak(outputSpeech)
+        .reprompt('try again, ' + station.stationName)
+        .getResponse();
   },
 };

@@ -4,6 +4,7 @@ const {
   getWaitTimes,
   getOutgoing,
   getIncoming,
+  getGrouped
 } = require('./stationParser');
 
 const getData = async () => {
@@ -20,7 +21,7 @@ module.exports = async (stationName) => {
   const station = parseStation(data, stationName.toLowerCase());
   return {
     stationName: stationName.toLowerCase(),
-    outgoing: getWaitTimes(getOutgoing(station)),
-    incoming: getWaitTimes(getIncoming(station)),
+    outgoing: getGrouped(getWaitTimes(getOutgoing(station))),
+    incoming: getGrouped(getWaitTimes(getIncoming(station))),
   };
 };
