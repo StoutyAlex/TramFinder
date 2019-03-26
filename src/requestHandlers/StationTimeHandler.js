@@ -13,6 +13,7 @@ module.exports = {
     try {
         requestedStation = await station(stationName);
       } catch (error) {
+        console.log(error);
         return responseBuilder
           .speak('There was an error getting the data for ' + stationName)
           .reprompt('try again, ' + 'outputSpeech')
