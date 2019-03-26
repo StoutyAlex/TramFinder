@@ -34,6 +34,6 @@ describe('Translator', () => {
     ]
   }
     expect(translator(station)).toEqual(
-      'Here are the tram times at jib: The next tram to Eccles is in 1 and 2 minutes The next tram to Ashton is in 5 10 and 12 minutes The next tram to Cornbrook is in 5 minutes. The next tram to Eccles is in 1  and 2 minutes. The next tram to Ashton is in 5 10  and 12 minutes. The next tram to Cornbrook is in 5 minutes. ');
+      'Here are the tram times at jib: The next tram to Eccles is in 1 and 2 minutes. The next tram to Ashton is in 5 10 and 12 minutes. The next tram to Cornbrook is in 5 minutes. The next tram to Eccles is in 1 and 2 minutes. The next tram to Ashton is in 5 10 and 12 minutes. The next tram to Cornbrook is in 5 minutes. ');
   })
 });
