@@ -9,6 +9,7 @@ module.exports = {
   handle({ responseBuilder }) {
     return responseBuilder
       .speak(helpText)
+      .reprompt(helpText)
       .getResponse();
-  }
+    }
 };
