@@ -17,7 +17,7 @@ module.exports = (station) => {
         if(j != wait.length -1) {
           outputSpeech = outputSpeech + `${wait[j]} `
         } else {
-          outputSpeech = outputSpeech + ` and ${wait[j]} minutes `;
+          outputSpeech = outputSpeech + `and ${wait[j]} minutes `;
         }
       }
     }
