@@ -6,6 +6,8 @@ const LaunchHandler = require('./src/requestHandlers/LaunchHandler');
 const SessionEndedHandler = require('./src/requestHandlers/SessionEndedHandler');
 const StationTimeHandler = require('./src/requestHandlers/StationTimeHandler');
 
+const StopAndCancelHandler = require('./src/requestHandlers/StopAndCancelHandler');
+
 const skillBuilder = Alexa.SkillBuilders.custom();
 exports.handler = skillBuilder
     .addRequestHandlers(
@@ -13,5 +15,6 @@ exports.handler = skillBuilder
       TimeHandler,
       StationTimeHandler,
       SessionEndedHandler,
+      StopAndCancelHandler,
     )
     .lambda();
