@@ -20,8 +20,10 @@ module.exports = {
           .getResponse();
       }
 
-      const outputSpeech = translator(requestedStation);
-      console.log(requestedStation);
+      let outputSpeech = 'Could not find station details for ' + stationName;
+      if(requestedStation.outgoing.length !== 0 || requestedStation.incoming.length !== 0) {
+        outputSpeech = translator(requestedStation);
+      }
 
       return responseBuilder
         .speak(outputSpeech)
